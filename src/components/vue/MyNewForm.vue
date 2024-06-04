@@ -1,60 +1,141 @@
+<script>
+
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const name = ref('')
+    const url = ref('')
+    const description = ref('')
+    const ratings = ref(null) // Non dovresti usare un valore 'null' in realtà, dovresti inizializzarlo ad un valore predefinito, come "1", se non vuoi che sia necessario selezionare una stella almeno.
+    const category = ref(null)
+    const subcategory = ref(null)
+
+    // Qui puoi aggiungere metodi per gestire eventi o invocare altre funzioni quando vuoi
+
+    return {
+      name,
+      url,
+      description,
+      ratings,
+      category,
+      subcategory,
+    }
+  },
+}
+
+</script>
 <template>
-  <section>
+  <section class="section">
     <div class="container">
-      <h1 class="text-3xl font-bold mb-4">Dettagli del Prodotto</h1>
+      <h1 class="text-3xl font-bold mb-4">Inserisci nuovo sito</h1>
       <div class="form-container border-2 border-purple-400 p-4 rounded-lg">
-        <form>
-          <div class="form-group">
-            <label for="name">Nome:</label>
-            <input type="text" id="name" name="name" required />
-          </div>
-          <div class="form-group">
-            <label for="url">URL:</label>
-            <input type="url" id="url" name="url" required />
-          </div>
-          <div class="form-group">
-            <label for="description">Descrizione:</label>
-            <textarea id="description" name="description" required></textarea>
-          </div>
-          <div class="form-group">
-            <label for="ratings">Valutazioni:</label>
-            <div id="ratings" class="ratings">
-              <input type="radio" id="star5" name="ratings" value="5" />
-              <label for="star5" title="5 stelle">★</label>
-              <input type="radio" id="star4" name="ratings" value="4" />
-              <label for="star4" title="4 stelle">★</label>
-              <input type="radio" id="star3" name="ratings" value="3" />
-              <label for="star3" title="3 stelle">★</label>
-              <input type="radio" id="star2" name="ratings" value="2" />
-              <label for="star2" title="2 stelle">★</label>
-              <input type="radio" id="star1" name="ratings" value="1" />
-              <label for="star1" title="1 stella">★</label>
+        <form class="my-form">
+          <div class="sx">
+            <div class="form-group">
+              <label for="name">Nome:</label>
+              <input 
+                class="border border-black" 
+                type="text" 
+                id="name" 
+                name="name"
+                v-model="name"
+                required />
+            </div>
+            <div class="form-group">
+              <label for="url">URL:</label>
+              <input 
+                class="border border-black" 
+                type="url" 
+                id="url" 
+                name="url"
+                v-model="url"
+                required 
+              />
+            </div>
+            <div class="form-group">
+              <label for="description">Descrizione:</label>
+              <textarea 
+                class="border border-black" 
+                id="description" 
+                name="description"
+                v-model="description"
+                required
+              >
+              </textarea>
+            </div>
+            <div class="form-group">
+              <label for="ratings">Valutazioni:</label>
+              <div id="ratings" class="ratings">
+                <input type="radio" id="star5" name="ratings" value="5" />
+                <label for="star5" title="5 stelle">★</label>
+                <input type="radio" id="star4" name="ratings" value="4" />
+                <label for="star4" title="4 stelle">★</label>
+                <input type="radio" id="star3" name="ratings" value="3" />
+                <label for="star3" title="3 stelle">★</label>
+                <input type="radio" id="star2" name="ratings" value="2" />
+                <label for="star2" title="2 stelle">★</label>
+                <input type="radio" id="star1" name="ratings" value="1" />
+                <label for="star1" title="1 stella">★</label>
+              </div>
             </div>
           </div>
-          <div class="form-group">
-            <label for="category">Categoria:</label>
-            <select id="category" name="category" required>
-              <option value="1">Categoria 1</option>
-              <option value="2">Categoria 2</option>
-              <option value="3">Categoria 3</option>
-            </select>
+          <div class="dx">
+            <div class="form-group">
+              <label for="category">Categoria:</label>
+              <select 
+                id="category" 
+                name="category"
+                v-model="category" 
+                required
+              >
+                <option value="1">Categoria 1</option>
+                <option value="2">Categoria 2</option>
+                <option value="3">Categoria 3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="subcategory">Sottocategoria:</label>
+              <select 
+                id="subcategory" 
+                name="subcategory" 
+                v-model="subcategory"
+                required
+              >
+                <option value="1">Sottocategoria 1</option>
+                <option value="2">Sottocategoria 2</option>
+                <option value="3">Sottocategoria 3</option>
+              </select>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="subcategory">Sottocategoria:</label>
-            <select id="subcategory" name="subcategory" required>
-              <option value="1">Sottocategoria 1</option>
-              <option value="2">Sottocategoria 2</option>
-              <option value="3">Sottocategoria 3</option>
-            </select>
-          </div>
-          <button type="submit">Invia</button>
         </form>
+        <button type="submit">Invia</button>
       </div>
+
     </div>
   </section>
 </template>
   
 <style>
+
+.section {
+  position: relative;
+}
+.form-container {
+  width: 600px !important;
+  margin-top: 2rem;
+}
+.my-form {
+  display: flex;
+  flex-direction: row;
+}
+.dx {
+  padding-left: 2rem;
+}
+.ratings {
+  display: flex;
+  flex-direction: row;
+}
 .ratings input {
   display: none;
 }
