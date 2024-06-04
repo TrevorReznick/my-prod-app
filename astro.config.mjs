@@ -8,7 +8,7 @@ import netlify from '@astrojs/netlify';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://bookmarks-list.netlify.app/',
-  integrations: [vue(), netlify()],
+  integrations: [vue(), tailwind(), netlify()],
   output: 'server',
   adapter: netlify()
 });
