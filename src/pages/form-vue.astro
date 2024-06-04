@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Default.astro'
+import NewForm from '../components/vue/MyNewForm.vue'
+import NavBar from '../components/vue/Navbar.vue'
+import '../assets/sytles/style.astro'
+---
+
+<Layout title="Test Vue">
+	<NavBar client:visible />
+	<NewForm client:visible />
+</Layout>
