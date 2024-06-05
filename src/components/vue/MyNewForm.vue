@@ -35,6 +35,17 @@ export default {
         console.error(error)
       }
     }
+    
+    const sendData = async () => {
+      const data_ = {
+        name,
+        url,
+        description,
+        ratings,
+        category,
+        subcategory,
+        subcategories
+    }
 
     onMounted(() => {
       getCategories()//(category.value)
@@ -137,7 +148,7 @@ export default {
             </div>
           </div>
         </form>
-        <button type="submit">Invia</button>
+        <button type="submit" onSubmit="sendData">Invia</button>
       </div>
 
     </div>
