@@ -13,9 +13,10 @@ export default {
     const subcategories = ref([])
 
     // Qui puoi aggiungere metodi per gestire eventi o invocare altre funzioni quando vuoi
+    const api_url = import.meta.env.PROD_API_URL || import.meta.env.DEV_API_URL
     const getSubcategories = async () => {
       try {
-        const response = await fetch('http://localhost:4321/api/v1/main-category')
+        const response = await fetch(api_url + main-category')
         const data = await response.json()
         subcategories.value = data
       } catch (error) {
