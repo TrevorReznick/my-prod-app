@@ -3,6 +3,8 @@ export interface Props {
 	title: string
 }
 
+const api_url = import.meta.env.PROD ? import.meta.env.PROD_API_URL : import.meta.env.DEV_API_URL
+
 const { title } = Astro.props
 ---
 

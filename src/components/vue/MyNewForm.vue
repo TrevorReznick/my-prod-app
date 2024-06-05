@@ -1,6 +1,6 @@
 <script>
 
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 export default {
   setup() {
@@ -10,8 +10,22 @@ export default {
     const ratings = ref(null) // Non dovresti usare un valore 'null' in realtà, dovresti inizializzarlo ad un valore predefinito, come "1", se non vuoi che sia necessario selezionare una stella almeno.
     const category = ref(null)
     const subcategory = ref(null)
+    const subcategories = ref([])
 
     // Qui puoi aggiungere metodi per gestire eventi o invocare altre funzioni quando vuoi
+    const getSubcategories = async () => {
+      try {
+        const response = await fetch('http://localhost:4321/api/v1/main-category')
+        const data = await response.json()
+        subcategories.value = data
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    onMounted(() => {
+      getSubcategories(category.value)
+    })    
 
     return {
       name,
@@ -20,8 +34,10 @@ export default {
       ratings,
       category,
       subcategory,
+      subcategories
     }
   },
+
 }
 
 </script>
@@ -81,6 +97,17 @@ export default {
             </div>
           </div>
           <div class="dx">
+            <div class="form-group">
+              <label for="subcategory">Sottocategoria:</label>
+              <select 
+                id="subcategory" 
+                name="subcategory"               
+                v-model="subcategory" 
+                required
+              >
+                <option v-for="subcategory in subcategories" :key="subcategory.id" :value="subcategory.id">{{ subcategory.name }}</option>
+              </select>
+            </div>
             <div class="form-group">
               <label for="category">Categoria:</label>
               <select 
