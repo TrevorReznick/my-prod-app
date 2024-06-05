@@ -13,7 +13,7 @@ export default {
     const subcategories = ref([])
 
     // Qui puoi aggiungere metodi per gestire eventi o invocare altre funzioni quando vuoi
-    const api_url = import.meta.env.PROD_API_URL || import.meta.env.DEV_API_URL
+    const api_url = import.meta.env.PROD_API_URL
     const getSubcategories = async () => {
       try {
         const response = await fetch(api_url + 'main-category')
