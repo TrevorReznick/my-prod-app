@@ -11,12 +11,24 @@ export default {
     const category = ref(null)
     const subcategory = ref(null)
     const subcategories = ref([])
+    const categories = ref([])
 
     // Qui puoi aggiungere metodi per gestire eventi o invocare altre funzioni quando vuoi
     const api_url = import.meta.env.PROD_API_URL
-    const getSubcategories = async () => {
+    
+    const getCategories = async () => {
       try {
         const response = await fetch('https://bookmarks-list.netlify.app/api/v1/main-category')
+        const data = await response.json()
+        categories.value = data
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    const getSubCategories = async () => {
+      try {
+        const response = await fetch('https://bookmarks-list.netlify.app/api/v1/sub-category')
         const data = await response.json()
         subcategories.value = data
       } catch (error) {
@@ -25,7 +37,9 @@ export default {
     }
 
     onMounted(() => {
-      getSubcategories(category.value)
+      getCategories()//(category.value)
+      getSubCategories()
+      
     })    
 
     return {
@@ -35,7 +49,8 @@ export default {
       ratings,
       category,
       subcategory,
-      subcategories
+      subcategories,
+      categories
     }
   },
 
@@ -99,14 +114,14 @@ export default {
           </div>
           <div class="dx">
             <div class="form-group">
-              <label for="subcategory">Sottocategoria:</label>
+              <label for="subcategory">Categoria:</label>
               <select 
-                id="subcategory" 
-                name="subcategory"               
-                v-model="subcategory" 
+                id="category" 
+                name="category"               
+                v-model="category" 
                 required
               >
-                <option v-for="subcategory in subcategories" :key="subcategory.id" :value="subcategory.id">{{ subcategory.name }}</option>
+                <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}</option>
               </select>
             </div>
             <div class="form-group">
