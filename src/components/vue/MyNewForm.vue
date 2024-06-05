@@ -125,19 +125,6 @@ export default {
               </select>
             </div>
             <div class="form-group">
-              <label for="category">Categoria:</label>
-              <select 
-                id="category" 
-                name="category"
-                v-model="category" 
-                required
-              >
-                <option value="1">Categoria 1</option>
-                <option value="2">Categoria 2</option>
-                <option value="3">Categoria 3</option>
-              </select>
-            </div>
-            <div class="form-group">
               <label for="subcategory">Sottocategoria:</label>
               <select 
                 id="subcategory" 
@@ -145,9 +132,7 @@ export default {
                 v-model="subcategory"
                 required
               >
-                <option value="1">Sottocategoria 1</option>
-                <option value="2">Sottocategoria 2</option>
-                <option value="3">Sottocategoria 3</option>
+                <option v-for="subcategory in subcategories" :key="subcategory.id" :value="subcategory.id">{{ subcategory.name }}</option>
               </select>
             </div>
           </div>
