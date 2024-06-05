@@ -5,7 +5,7 @@ export const GET: APIRoute = async () => {
   const { data, error } = await supabase
     .from("sub_category")
     .select("*")
-    .order("id", { ascending: true })
+    .order("name", { ascending: true })
 
   if (error) {
     return new Response(
