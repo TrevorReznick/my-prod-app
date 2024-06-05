@@ -3,7 +3,7 @@ import { supabase } from '../../../providers/supabase'
 
 export const GET: APIRoute = async () => {
   const { data, error } = await supabase
-    .from("main_category")
+    .from("sub_category")
     .select("*")
     .order("name", { ascending: true })
 
@@ -18,4 +18,3 @@ export const GET: APIRoute = async () => {
 
   return new Response(JSON.stringify(data))
 };
-
