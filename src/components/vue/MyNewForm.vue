@@ -16,7 +16,7 @@ export default {
     const api_url = import.meta.env.PROD_API_URL || import.meta.env.DEV_API_URL
     const getSubcategories = async () => {
       try {
-        const response = await fetch(api_url + main-category')
+        const response = await fetch(api_url + 'main-category')
         const data = await response.json()
         subcategories.value = data
       } catch (error) {
