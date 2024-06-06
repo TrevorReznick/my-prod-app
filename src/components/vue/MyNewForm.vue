@@ -1,5 +1,5 @@
-<script>
 
+<script>
 import { ref, onMounted } from 'vue'
 
 export default {
@@ -7,15 +7,14 @@ export default {
     const name = ref('')
     const url = ref('')
     const description = ref('')
-    const ratings = ref(null) // Non dovresti usare un valore 'null' in realtà, dovresti inizializzarlo ad un valore predefinito, come "1", se non vuoi che sia necessario selezionare una stella almeno.
+    const ratings = ref(1) // Inizializziamo con un valore predefinito come "1"
     const category = ref(null)
     const subcategory = ref(null)
     const subcategories = ref([])
     const categories = ref([])
 
-    // Qui puoi aggiungere metodi per gestire eventi o invocare altre funzioni quando vuoi
-    const api_url = import.meta.env.PROD_API_URL
-    
+    // Eventualmente, puoi aggiungere ulteriori logiche all'interno di onMounted o altri lifecycle hooks
+
     const getCategories = async () => {
       try {
         const response = await fetch('https://bookmarks-list.netlify.app/api/v1/main-category')
@@ -38,20 +37,35 @@ export default {
     
     const sendData = async () => {
       const data_ = {
-        name,
-        url,
-        description,
-        ratings,
-        category,
-        subcategory,
-        subcategories
+        name: name.value,
+        url: url.value,
+        description: description.value,
+        ratings: ratings.value,
+        category: category.value,
+        subcategory: subcategory.value,
+        subcategories: subcategories.value
+      }
+
+      // Esempio di invio dei dati (assumendo che tu abbia un'API per questo)
+      try {
+        const response = await fetch('YOUR_API_ENDPOINT', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data_)
+        })
+        const result = await response.json()
+        console.log(result)
+      } catch (error) {
+        console.error(error)
+      }
     }
 
     onMounted(() => {
-      getCategories()//(category.value)
-      getSubCategories()
-      
-    })    
+      getCategories()
+      getSubCategories()      
+    })
 
     return {
       name,
@@ -61,13 +75,13 @@ export default {
       category,
       subcategory,
       subcategories,
-      categories
+      categories,
+      sendData // Assicurati di restituire la funzione sendData se vuoi usarla nel template
     }
-  },
-
+  }
 }
-
 </script>
+
 <template>
   <section class="section">
     <div class="container">
@@ -155,7 +169,7 @@ export default {
   </section>
 </template>
   
-<style>
+<style scoped>
 
 .section {
   position: relative;
@@ -190,5 +204,5 @@ export default {
 .ratings label:hover ~ label {
   color: gold;
 }
+
 </style>
-  
