@@ -162,7 +162,7 @@ export default {
             </div>
           </div>
         </form>
-        <button type="submit" onSubmit="sendData">Invia</button>
+        <button type="submit">Invia</button>
       </div>
 
     </div>
