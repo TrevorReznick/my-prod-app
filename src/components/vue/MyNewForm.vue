@@ -12,6 +12,7 @@ export default {
     const subcategory = ref(null)
     const subcategories = ref([])
     const categories = ref([])
+    const main = ref([])
 
     // Eventualmente, puoi aggiungere ulteriori logiche all'interno di onMounted o altri lifecycle hooks
 
@@ -20,7 +21,7 @@ export default {
 
     const getCategories = async () => {
       try {
-        const response = await fetch(api_dev + 'main-category')
+        const response = await fetch(api_prod + 'main-category')
         const data = await response.json()
         categories.value = data
       } catch (error) {
@@ -30,9 +31,19 @@ export default {
 
     const getSubCategories = async () => {
       try {
-        const response = await fetch(api_dev + 'sub-category')
+        const response = await fetch(api_prod + 'sub-category')
         const data = await response.json()
         subcategories.value = data
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    const getMain = async () => {
+      try {
+        const response = await fetch(api_prod + 'main')
+        const data = await response.json()
+        main.value = data
       } catch (error) {
         console.error(error)
       }
@@ -50,7 +61,7 @@ export default {
 
       // Esempio di invio dei dati (assumendo che tu abbia un'API per questo)
       try {
-        const response = await fetch(api_dev + 'main', {
+        const response = await fetch(api_prod + 'main', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -66,7 +77,8 @@ export default {
 
     onMounted(() => {
       getCategories()
-      getSubCategories()      
+      getSubCategories()
+      getMain()
     })
 
     return {
@@ -148,7 +160,7 @@ export default {
                 v-model="category" 
                 required
               >
-                <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}</option>
+                <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.cat_name }}</option>
               </select>
             </div>
             <div class="form-group">
@@ -159,7 +171,7 @@ export default {
                 v-model="subcategory"
                 required
               >
-                <option v-for="subcategory in subcategories" :key="subcategory.id" :value="subcategory.id">{{ subcategory.name }}</option>
+                <option v-for="subcategory in subcategories" :key="subcategory.id" :value="subcategory.id">{{ subcategory.sub_cat_name }}</option>
               </select>
             </div>
           </div>
