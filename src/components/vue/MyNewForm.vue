@@ -42,8 +42,7 @@ export default {
         description: description.value,
         ratings: ratings.value,
         category: category.value,
-        subcategory: subcategory.value,
-        subcategories: subcategories.value
+        subcategory: subcategory.value        
       }
 
       // Esempio di invio dei dati (assumendo che tu abbia un'API per questo)
