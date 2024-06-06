@@ -48,7 +48,7 @@ export default {
 
       // Esempio di invio dei dati (assumendo che tu abbia un'API per questo)
       try {
-        const response = await fetch('YOUR_API_ENDPOINT', {
+        const response = await fetch('https://bookmarks-list.netlify.app/api/v1/main', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -87,7 +87,7 @@ export default {
     <div class="container">
       <h1 class="text-3xl font-bold mb-4">Inserisci nuovo sito</h1>
       <div class="form-container border-2 border-purple-400 p-4 rounded-lg">
-        <form class="my-form">
+        <form class="my-form" @submit.prevent="sendData">
           <div class="sx">
             <div class="form-group">
               <label for="name">Nome:</label>
