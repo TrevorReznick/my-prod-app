@@ -15,9 +15,12 @@ export default {
 
     // Eventualmente, puoi aggiungere ulteriori logiche all'interno di onMounted o altri lifecycle hooks
 
+    const api_prod = 'https://bookmarks-list.netlify.app/api/v1/'
+    const api_dev = 'http://localhost:4321/api/v1/'
+
     const getCategories = async () => {
       try {
-        const response = await fetch('https://bookmarks-list.netlify.app/api/v1/main-category')
+        const response = await fetch(api_dev + 'main-category')
         const data = await response.json()
         categories.value = data
       } catch (error) {
@@ -27,7 +30,7 @@ export default {
 
     const getSubCategories = async () => {
       try {
-        const response = await fetch('https://bookmarks-list.netlify.app/api/v1/sub-category')
+        const response = await fetch(api_dev + 'sub-category')
         const data = await response.json()
         subcategories.value = data
       } catch (error) {
@@ -37,17 +40,17 @@ export default {
     
     const sendData = async () => {
       const data_ = {
-        name: name.value,
+        id_cat: category.value,
+        id_sub_cat: subcategory.value,
+        ratings: ratings.value,
         url: url.value,
         description: description.value,
-        ratings: ratings.value,
-        category: category.value,
-        subcategory: subcategory.value        
+        name: name.value              
       }
 
       // Esempio di invio dei dati (assumendo che tu abbia un'API per questo)
       try {
-        const response = await fetch('https://bookmarks-list.netlify.app/api/v1/main', {
+        const response = await fetch(api_dev + 'main', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
