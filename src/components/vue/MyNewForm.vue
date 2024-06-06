@@ -161,8 +161,8 @@ export default {
               </select>
             </div>
           </div>
-        </form>
-        <button type="submit">Invia</button>
+          <button type="submit">Invia</button>
+        </form>        
       </div>
 
     </div>
