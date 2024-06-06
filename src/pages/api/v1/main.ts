@@ -22,7 +22,7 @@ export const GET: APIRoute = async () => {
 export const POST: APIRoute = async ({ request }) => {
   const { id_cat, id_sub_cat, ratings, url, description, name } = await request.json()
   const { data, error } = await supabase
-    .from("guestbook")
+    .from('main_table')
     .insert({ id_cat, id_sub_cat, ratings, url, description, name })
     .select();
 
