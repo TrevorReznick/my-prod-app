@@ -78,7 +78,7 @@ export default {
     onMounted(() => {
       getCategories()
       getSubCategories()
-      getMain()
+      //getMain()
     })
 
     return {
