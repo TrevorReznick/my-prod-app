@@ -24,6 +24,7 @@ export default {
     /* test */
     const subcategoryInput = ref('')
     const filteredSubcategories = ref([])
+    
 
 
     // Eventualmente, puoi aggiungere ulteriori logiche all'interno di onMounted o altri lifecycle hooks
@@ -111,7 +112,9 @@ export default {
       subcategory,
       subcategories,
       categories,
-      sendData // Assicurati di restituire la funzione sendData se vuoi usarla nel template
+      sendData, // Assicurati di restituire la funzione sendData se vuoi usarla nel template
+      filterSubcategories,
+      selectSubcategory
     }
   }
 }
