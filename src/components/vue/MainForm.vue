@@ -43,7 +43,7 @@ export default {
       }
     }
 
-    fetchProviders = async () => {
+    const fetchProviders = async () => {
       try {
         providers.value = await getProviders()
       } catch (error) {
