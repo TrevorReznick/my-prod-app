@@ -101,78 +101,80 @@ export default {
     <div class="container">
       <h1 class="text-3xl font-bold mb-4">Inserisci nuovo sito</h1>
       <div class="form-container border-2 border-purple-400 p-4 rounded-lg">
-        <form class="my-form" @submit.prevent="sendData">
-          <div class="sx">
-            <div class="form-group">
-              <label for="name">Nome:</label>
-              <input 
-                class="border border-black" 
-                type="text" 
-                id="name" 
-                name="name"
-                v-model="name"
-                required />
-            </div>
-            <div class="form-group">
-              <label for="url">URL:</label>
-              <input 
-                class="border border-black" 
-                type="url" 
-                id="url" 
-                name="url"
-                v-model="url"
-                required 
-              />
-            </div>
-            <div class="form-group">
-              <label for="description">Descrizione:</label>
-              <textarea 
-                class="border border-black" 
-                id="description" 
-                name="description"
-                v-model="description"
-                required
-              >
-              </textarea>
-            </div>
-            <div class="form-group">
-              <label for="ratings">Valutazioni:</label>
-              <div id="ratings" class="ratings">
-                <input type="radio" id="star5" name="ratings" value="5" />
-                <label for="star5" title="5 stelle">★</label>
-                <input type="radio" id="star4" name="ratings" value="4" />
-                <label for="star4" title="4 stelle">★</label>
-                <input type="radio" id="star3" name="ratings" value="3" />
-                <label for="star3" title="3 stelle">★</label>
-                <input type="radio" id="star2" name="ratings" value="2" />
-                <label for="star2" title="2 stelle">★</label>
-                <input type="radio" id="star1" name="ratings" value="1" />
-                <label for="star1" title="1 stella">★</label>
+        <form @submit.prevent="sendData">
+          <div class="my-form">
+            <div class="sx">
+              <div class="form-group">
+                <label for="name">Nome:</label>
+                <input 
+                  class="border border-black" 
+                  type="text" 
+                  id="name" 
+                  name="name"
+                  v-model="name"
+                  required />
+              </div>
+              <div class="form-group">
+                <label for="url">URL:</label>
+                <input 
+                  class="border border-black" 
+                  type="url" 
+                  id="url" 
+                  name="url"
+                  v-model="url"
+                  required 
+                />
+              </div>
+              <div class="form-group">
+                <label for="description">Descrizione:</label>
+                <textarea 
+                  class="border border-black" 
+                  id="description" 
+                  name="description"
+                  v-model="description"
+                  required
+                >
+                </textarea>
+              </div>
+              <div class="form-group">
+                <label for="ratings">Valutazioni:</label>
+                <div id="ratings" class="ratings">
+                  <input type="radio" id="star5" name="ratings" value="5" />
+                  <label for="star5" title="5 stelle">★</label>
+                  <input type="radio" id="star4" name="ratings" value="4" />
+                  <label for="star4" title="4 stelle">★</label>
+                  <input type="radio" id="star3" name="ratings" value="3" />
+                  <label for="star3" title="3 stelle">★</label>
+                  <input type="radio" id="star2" name="ratings" value="2" />
+                  <label for="star2" title="2 stelle">★</label>
+                  <input type="radio" id="star1" name="ratings" value="1" />
+                  <label for="star1" title="1 stella">★</label>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="dx">
-            <div class="form-group">
-              <label for="subcategory">Categoria:</label>
-              <select 
-                id="category" 
-                name="category"               
-                v-model="category" 
-                required
-              >
-                <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.cat_name }}</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="subcategory">Sottocategoria:</label>
-              <select 
-                id="subcategory" 
-                name="subcategory" 
-                v-model="subcategory"
-                required
-              >
-                <option v-for="subcategory in subcategories" :key="subcategory.id" :value="subcategory.id">{{ subcategory.sub_cat_name }}</option>
-              </select>
+            <div class="dx">
+              <div class="form-group">
+                <label for="subcategory">Categoria:</label>
+                <select 
+                  id="category" 
+                  name="category"               
+                  v-model="category" 
+                  required
+                >
+                  <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.cat_name }}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="subcategory">Sottocategoria:</label>
+                <select 
+                  id="subcategory" 
+                  name="subcategory" 
+                  v-model="subcategory"
+                  required
+                >
+                  <option v-for="subcategory in subcategories" :key="subcategory.id" :value="subcategory.id">{{ subcategory.sub_cat_name }}</option>
+                </select>
+              </div>
             </div>
           </div>
           <button type="submit">Invia</button>
