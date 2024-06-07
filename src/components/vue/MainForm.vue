@@ -1,6 +1,12 @@
 
 <script>
 import { ref, onMounted } from 'vue'
+import { 
+  getCategories, 
+  getSubCategories, 
+  getProviders,  
+  getMain
+} from '../../scripts/requests';
 
 export default {
   setup() {
@@ -20,45 +26,29 @@ export default {
     const api_prod = 'https://bookmarks-list.netlify.app/api/v1/'
     const api_dev = 'http://localhost:4321/api/v1/'
 
-    const getCategories = async () => {
+    const fetchCategories = async () => {
       try {
-        const response = await fetch(api_prod + 'main-category')
-        const data = await response.json()
-        categories.value = data
+        categories.value = await getCategories()
       } catch (error) {
         console.error(error)
       }
     }
 
-    const getSubCategories = async () => {
+    const fetchSubCategories = async () => {
       try {
-        const response = await fetch(api_prod + 'sub-category')
-        const data = await response.json()
-        subcategories.value = data
+        subcategories.value = await getSubCategories()
       } catch (error) {
         console.error(error)
       }
     }
 
-    const getProviders = async () => {
+    fetchProviders = async () => {
       try {
-        const response = await fetch(api_prod + 'providers')
-        const data = await response.json()
-        providers.value = data
+        providers.value = await getProviders()
       } catch (error) {
         console.error(error)
-      }
-    }
-
-    const getMain = async () => {
-      try {
-        const response = await fetch(api_prod + 'main')
-        const data = await response.json()
-        main.value = data
-      } catch (error) {
-        console.error(error)
-      }
-    }
+      }      
+    }    
     
     const sendData = async () => {
       const data_ = {
@@ -87,9 +77,9 @@ export default {
     }
 
     onMounted(() => {
-      getCategories()
-      getSubCategories()
-      console.log(getProviders())
+      fetchCategories()
+      fetchSubCategories()
+      fetchProviders()
       //getMain()
     })
 
