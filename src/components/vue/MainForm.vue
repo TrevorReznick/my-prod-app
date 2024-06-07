@@ -1,6 +1,6 @@
 
 <script>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, isProxy, toRaw} from 'vue'
 import { 
   getCategories, 
   getSubCategories, 
@@ -60,12 +60,17 @@ export default {
     /* other api */
 
     const filterSubcategories = () => {
+      console.log('filtering sub cat')
       const query = subcategoryInput.value.toLowerCase()
-      filteredSubcategories.value = subcategories.value.filter(sub => sub.name.toLowerCase().includes(query))
+      console.log('input', query)
+      filteredSubcategories.value = subcategories.value.filter(sub => sub.sub_cat_name.toLowerCase().includes(query))      
+      const obj = JSON.parse(JSON.stringify(filteredSubcategories.value))
+      console.log(obj)
     }
 
     const selectSubcategory = (sub) => {
-      subcategoryInput.value = sub.name
+      console.log('select sub cat')
+      subcategoryInput.value = sub_cat_name.name
       filteredSubcategories.value = []
     }
 
@@ -113,8 +118,10 @@ export default {
       subcategories,
       categories,
       sendData, // Assicurati di restituire la funzione sendData se vuoi usarla nel template
-      filterSubcategories,
-      selectSubcategory
+      subcategoryInput,
+      filteredSubcategories,
+      filterSubcategories,//method
+      selectSubcategory//method
     }
   }
 }
@@ -207,7 +214,8 @@ export default {
                     placeholder="Start typing to search subcategories..."
                   />
                   <!-- Lista dei suggerimenti per l'autocompletamento -->
-                  <ul v-if="filteredSubcategories.length">
+                  <!--<ul v-if="filteredSubcategories.length">-->
+                  <ul>
                     <li v-for="sub in filteredSubcategories" :key="sub.id" @click="selectSubcategory(sub)">
                       {{ sub.name }}
                     </li>
