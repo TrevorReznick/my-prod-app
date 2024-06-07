@@ -68,9 +68,9 @@ export default {
       console.log(obj)
     }
 
-    const selectSubcategory = (sub) => {
+    const selectSubcategory = (element) => {
       console.log('select sub cat')
-      subcategoryInput.value = sub_cat_name.name
+      subcategory.value = element
       filteredSubcategories.value = []
     }
 
@@ -197,6 +197,22 @@ export default {
               </div>
               <div class="form-group">
                 <label for="subcategory">Sottocategoria:</label>
+                  <!-- Campo di input per l'autocompletamento -->
+                <input
+                  type="text"
+                  v-model="subcategoryInput"
+                  @input="filterSubcategories"
+                  placeholder="Start typing to search subcategories..."
+                />
+                <ul>
+                  <li v-for="sub in filteredSubcategories" :key="sub.id" @click="selectSubcategory(sub.id)">
+                    {{ sub.sub_cat_name }}
+                  </li>
+                </ul>
+              </div>              
+              <!-- disabled select, works!
+              <div class="form-group">
+                <label for="subcategory">Sottocategoria:</label>
                 <select 
                   id="subcategory" 
                   name="subcategory" 
@@ -205,23 +221,8 @@ export default {
                 >
                   <option v-for="subcategory in subcategories" :key="subcategory.id" :value="subcategory.id">{{ subcategory.sub_cat_name }}</option>
                 </select>
-                <div class="form-group">
-                  <!-- Campo di input per l'autocompletamento -->
-                  <input
-                    type="text"
-                    v-model="subcategoryInput"
-                    @input="filterSubcategories"
-                    placeholder="Start typing to search subcategories..."
-                  />
-                  <!-- Lista dei suggerimenti per l'autocompletamento -->
-                  <!--<ul v-if="filteredSubcategories.length">-->
-                  <ul>
-                    <li v-for="sub in filteredSubcategories" :key="sub.id" @click="selectSubcategory(sub)">
-                      {{ sub.name }}
-                    </li>
-                  </ul>
-                </div>
               </div>
+              -->
             </div>
           </div>
           <button type="submit">Invia</button>
