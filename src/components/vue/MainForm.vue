@@ -12,6 +12,7 @@ export default {
     const subcategory = ref(null)
     const subcategories = ref([])
     const categories = ref([])
+    const providers = ref([])
     const main = ref([])
 
     // Eventualmente, puoi aggiungere ulteriori logiche all'interno di onMounted o altri lifecycle hooks
@@ -34,6 +35,16 @@ export default {
         const response = await fetch(api_prod + 'sub-category')
         const data = await response.json()
         subcategories.value = data
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    const getProviders = async () => {
+      try {
+        const response = await fetch(api_prod + 'providers')
+        const data = await response.json()
+        providers.value = data
       } catch (error) {
         console.error(error)
       }
@@ -78,6 +89,7 @@ export default {
     onMounted(() => {
       getCategories()
       getSubCategories()
+      console.log(getProviders())
       //getMain()
     })
 
