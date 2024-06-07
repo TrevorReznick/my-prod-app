@@ -67,6 +67,7 @@ export default {
       subcategoryInput.value = sub.name
       filteredSubcategories.value = []
     }
+
     
     const sendData = async () => {
       const data_ = {
