@@ -21,12 +21,17 @@ export default {
     const categories = ref([])
     const providers = ref([])
     const main = ref([])
+    /* test */
+    const subcategoryInput = ref('')
+    const filteredSubcategories = ref([])
+
 
     // Eventualmente, puoi aggiungere ulteriori logiche all'interno di onMounted o altri lifecycle hooks
 
     const api_prod = 'https://bookmarks-list.netlify.app/api/v1/'
     const api_dev = 'http://localhost:4321/api/v1/'
 
+    /* imported api */
     const fetchCategories = async () => {
       try {
         categories.value = await getCategories()
@@ -49,7 +54,19 @@ export default {
       } catch (error) {
         console.error(error)
       }      
-    }    
+    } 
+    
+    /* other api */
+
+    const filterSubcategories = () => {
+      const query = subcategoryInput.value.toLowerCase()
+      filteredSubcategories.value = subcategories.value.filter(sub => sub.name.toLowerCase().includes(query))
+    }
+
+    const selectSubcategory = (sub) => {
+      subcategoryInput.value = sub.name
+      filteredSubcategories.value = []
+    }
     
     const sendData = async () => {
       const data_ = {
@@ -177,6 +194,21 @@ export default {
                 >
                   <option v-for="subcategory in subcategories" :key="subcategory.id" :value="subcategory.id">{{ subcategory.sub_cat_name }}</option>
                 </select>
+                <div class="form-group">
+                  <!-- Campo di input per l'autocompletamento -->
+                  <input
+                    type="text"
+                    v-model="subcategoryInput"
+                    @input="filterSubcategories"
+                    placeholder="Start typing to search subcategories..."
+                  />
+                  <!-- Lista dei suggerimenti per l'autocompletamento -->
+                  <ul v-if="filteredSubcategories.length">
+                    <li v-for="sub in filteredSubcategories" :key="sub.id" @click="selectSubcategory(sub)">
+                      {{ sub.name }}
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -222,6 +254,24 @@ export default {
 .ratings label:hover,
 .ratings label:hover ~ label {
   color: gold;
+}
+/*autocompletition */
+ul {
+  border: 1px solid #ccc;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: #f0f0f0;
 }
 
 </style>
