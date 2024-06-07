@@ -9,6 +9,7 @@ import {
 } from '../../scripts/requests';
 
 export default {
+  //
   setup() {
     const name = ref('')
     const url = ref('')
