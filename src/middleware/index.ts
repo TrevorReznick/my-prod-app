@@ -1,8 +1,8 @@
-import { defineMiddleware } from "astro:middleware";
-import { supabase } from "../lib/supabase";
+import { defineMiddleware } from 'astro:middleware';
+import { supabase } from '../providers/supabase'
 
 const protectedRoutes = ['/dashboard'];
-const redirectRoutes = ['/signin', '/register'];
+const redirectRoutes = ['/login/signin', '/login/register'];
 
 export const onRequest = defineMiddleware(
   async ({ locals, url, cookies, redirect }, next) => {
@@ -11,7 +11,7 @@ export const onRequest = defineMiddleware(
       const refreshToken = cookies.get('sb-refresh-token');
 
       if (!accessToken || !refreshToken) {
-        return redirect('/signin');
+        return redirect('/login/signin');
       }
 
       const { data, error } = await supabase.auth.setSession({
@@ -26,7 +26,7 @@ export const onRequest = defineMiddleware(
         cookies.delete('sb-refresh-token', {
           path: '/',
         });
-        return redirect('/signin');
+        return redirect('/login/signin');
       }
 
       locals.email = data.user?.email!;
@@ -42,7 +42,7 @@ export const onRequest = defineMiddleware(
       });
     }
 
-    if (redirectRoutes.includes(url.pathname) || redirectRoutes.includes(url.pathname.replace(/\/$/, ""))) {
+    if (redirectRoutes.includes(url.pathname) || redirectRoutes.includes(url.pathname.replace(/\/$/, ''))) {
       const accessToken = cookies.get('sb-access-token');
       const refreshToken = cookies.get('sb-refresh-token');
 
