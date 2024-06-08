@@ -1,7 +1,7 @@
 import { defineMiddleware } from 'astro:middleware'
 import { supabase } from '../providers/supabase'
 
-const protectedRoutes = ['/dashboard', 'main']
+const protectedRoutes = ['/dashboard', '/main']
 const redirectRoutes = ['/login/signin', '/login/register']
 
 export const onRequest = defineMiddleware(
