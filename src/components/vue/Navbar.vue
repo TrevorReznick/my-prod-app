@@ -15,20 +15,15 @@
               >
             </li>
             <li>
-              <a href="/test/login" class="block text-zinc-900 dark:text-gray-200"
+              <a href="/login/signin" class="block text-zinc-900 dark:text-gray-200"
                 >Sign in</a
               >
             </li>
             <li>
-              <a href="/test/register" class="block text-zinc-900 dark:text-gray-200"
+              <a href="/login/register" class="block text-zinc-900 dark:text-gray-200"
                 >Register</a
               >
-            </li>
-            <li>
-              <a href="/test/signin" class="block text-zinc-900 dark:text-gray-200"
-                >Sign in</a
-              >
-            </li>
+            </li>            
           </ul>
         </div>
       </div>
