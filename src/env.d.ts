@@ -1,5 +1,11 @@
 /// <reference types="astro/client" />
 
+declare namespace App {
+    interface Locals {
+      email: string;
+    }
+}
+
 interface ImportMetaEnv {
     readonly PROD_API_URL: string;
     readonly DEV_API_URL: string;
@@ -9,3 +15,4 @@ interface ImportMetaEnv {
 interface ImportMeta {
     readonly env: ImportMetaEnv;
 }
+
