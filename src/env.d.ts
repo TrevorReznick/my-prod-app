@@ -21,7 +21,7 @@ interface MainFormData {
     url: string,
     description: string;
     ratings: number,
-    category: string,
-    subcategory: string
+    category: number,
+    subcategory: number
 }
 

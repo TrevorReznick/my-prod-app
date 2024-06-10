@@ -62,8 +62,8 @@ export default {
         url: url.value,
         description: description.value,
         ratings: ratings.value,
-        category: category.value,
-        subcategory: subcategory.value,
+        id_cat: category.value,
+        id_sub_cat: subcategory.value,
       }
       const result = await sendData(form_data)
       if (result.success) {
@@ -219,7 +219,7 @@ export default {
                   <!-- Campo di input per l'autocompletamento -->
                 <input
                   type="text"
-                  v-model="subcategoryInput"
+                  v-model="subcategory"
                   @input="filterSubcategories"
                   placeholder="Start typing to search subcategories..."
                 />
