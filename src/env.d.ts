@@ -16,3 +16,12 @@ interface ImportMeta {
     readonly env: ImportMetaEnv;
 }
 
+interface MainFormData {
+    name: string,
+    url: string,
+    description: string;
+    ratings: number,
+    category: string,
+    subcategory: string
+}
+

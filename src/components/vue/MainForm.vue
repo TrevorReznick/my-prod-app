@@ -5,7 +5,8 @@ import {
   getCategories, 
   getSubCategories, 
   getProviders,  
-  getMain
+  getMain,
+  sendData
 } from '../../scripts/requests';
 
 export default {
@@ -25,8 +26,6 @@ export default {
     const subcategoryInput = ref('')
     const filteredSubcategories = ref([])
     
-
-
     // Eventualmente, puoi aggiungere ulteriori logiche all'interno di onMounted o altri lifecycle hooks
 
     const api_prod = 'https://bookmarks-list.netlify.app/api/v1/'
@@ -55,6 +54,23 @@ export default {
       } catch (error) {
         console.error(error)
       }      
+    }
+
+    const doMainForm = async () => {
+      const form_data = {
+        name: name.value,
+        url: url.value,
+        description: description.value,
+        ratings: ratings.value,
+        category: category.value,
+        subcategory: subcategory.value,
+      }
+      const result = await sendData(form_data)
+      if (result.success) {
+        console.log('Post avvenuto con successo!')
+      } else {
+        console.log(`Errore: ${result.error}`)
+      }
     } 
     
     /* other api */
@@ -75,6 +91,7 @@ export default {
     }
 
     
+    /*
     const sendData = async () => {
       const data_ = {
         id_cat: category.value,
@@ -84,6 +101,7 @@ export default {
         description: description.value,
         name: name.value              
       }
+    
 
       // Esempio di invio dei dati (assumendo che tu abbia un'API per questo)
       try {
@@ -100,6 +118,7 @@ export default {
         console.error(error)
       }
     }
+    */
 
     onMounted(() => {
       fetchCategories()
@@ -132,7 +151,7 @@ export default {
     <div class="container">
       <h1 class="text-3xl font-bold mb-4">Inserisci nuovo sito</h1>
       <div class="form-container border-2 border-purple-400 p-4 rounded-lg">
-        <form @submit.prevent="sendData">
+        <form @submit.prevent="doMainForm">
           <div class="my-form">
             <div class="sx">
               <div class="form-group">
