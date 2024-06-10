@@ -151,7 +151,7 @@ export default {
     <div class="container">
       <h1 class="text-3xl font-bold mb-4">Inserisci nuovo sito</h1>
       <div class="form-container border-2 border-purple-400 p-4 rounded-lg">
-        <form @submit.prevent="doMainForm">
+        <form @submit.prevent="doMainForm()">
           <div class="my-form">
             <div class="sx">
               <div class="form-group">
