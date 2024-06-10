@@ -136,7 +136,7 @@ export default {
       subcategory,
       subcategories,
       categories,
-      sendData, // Assicurati di restituire la funzione sendData se vuoi usarla nel template
+      doMainForm, // Assicurati di restituire la funzione sendData se vuoi usarla nel template
       subcategoryInput,
       filteredSubcategories,
       filterSubcategories,//method
