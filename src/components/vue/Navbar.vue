@@ -1,3 +1,10 @@
+<script>
+import { onMounted, } from 'vue'
+onMounted(() => {
+  console.log('navabar vue component')
+})
+</script>
+
 <template>
     <nav class="border-b bg-white dark:bg-zinc-800 dark:border-zinc-700">
       <div

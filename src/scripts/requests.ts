@@ -1,9 +1,10 @@
-const api_prod = 'https://bookmarks-list.netlify.app/api/v1/'
-const api_dev = 'http://localhost:4321/api/v1/'
+const api_prod = import.meta.env.PUBLIC_PROD_API_URL
+const api_dev = import.meta.env.PUBLIC_DEV_API_URL
+const api_url = import.meta.env.MODE == 'production' ? api_prod : api_dev
 
 export async function sendData(data: MainFormData) {
     try {
-      const response = await fetch(api_prod + 'main', {
+      const response = await fetch(api_url + 'main', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -23,9 +24,9 @@ export async function sendData(data: MainFormData) {
     }
   }
 
-export const getCategories = async () => {
+export const getCategories = async () => {   
     try {
-        const response = await fetch(api_prod + 'main-category')
+        const response = await fetch(api_url + 'main-category')
         const data = await response.json()
         return data
     } catch (error) {
@@ -35,7 +36,7 @@ export const getCategories = async () => {
 
 export const getSubCategories = async () => {
     try {
-        const response = await fetch(api_prod + 'sub-category')
+        const response = await fetch(api_url + 'sub-category')
         const data = await response.json()
         return data
     } catch (error) {
@@ -45,7 +46,7 @@ export const getSubCategories = async () => {
 
 export const getProviders = async () => {
     try {
-        const response = await fetch(api_prod + 'providers')
+        const response = await fetch(api_url + 'providers')
         const data = await response.json()
         return data
     } catch (error) {
@@ -54,7 +55,7 @@ export const getProviders = async () => {
 }
 export const getMain = async () => {
     try {
-        const response = await fetch(api_prod + 'main')
+        const response = await fetch(api_url + 'main')
         const data = await response.json()
        return data
     } catch (error) {

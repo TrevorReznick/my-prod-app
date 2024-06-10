@@ -120,7 +120,7 @@ export default {
     }
     */
 
-    onMounted(() => {
+    onMounted(() => {      
       fetchCategories()
       fetchSubCategories()
       fetchProviders()
