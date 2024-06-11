@@ -19,12 +19,12 @@ export default {
     const main = ref([])
     const message = ref('')
     const name = ref('')
-    const url = ref('')
     const providers = ref([])
     const ratings = ref(1) // Inizializziamo con un valore predefinito come "1"
     const subcategories = ref([])
     const subcategory = ref(null)
-    const subcategoryInput = ref('')    
+    const subcategoryInput = ref('')
+    const url = ref('')
     
     // Eventualmente, puoi aggiungere ulteriori logiche all'interno di onMounted o altri lifecycle hooks
 
