@@ -143,7 +143,8 @@ export default {
       subcategoryInput,
       filteredSubcategories,
       filterSubcategories,//method
-      selectSubcategory//method
+      selectSubcategory, //method,
+      message
     }
   }
 }
