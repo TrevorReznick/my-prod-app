@@ -70,9 +70,15 @@ export default {
       if (result.success) {
         console.log('Post avvenuto con successo!')
         message.value = 'Post avvenuto con successo!'
+        setTimeout(() => {
+          message.value = ''
+        }, 5000)
       } else {
         console.log(`Errore: ${result.error}`)
-        message.value = `Errore: ${result.error}`;
+        message.value = `Errore: ${result.error}`
+        setTimeout(() => {
+          message.value = ''
+        }, 5000)
       }
     } 
     
@@ -94,35 +100,6 @@ export default {
     }
 
     
-    /*
-    const sendData = async () => {
-      const data_ = {
-        id_cat: category.value,
-        id_sub_cat: subcategory.value,
-        ratings: ratings.value,
-        url: url.value,
-        description: description.value,
-        name: name.value              
-      }
-    
-
-      // Esempio di invio dei dati (assumendo che tu abbia un'API per questo)
-      try {
-        const response = await fetch(api_prod + 'main', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data_)
-        })
-        const result = await response.json()
-        console.log(result)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    */
-
     onMounted(() => {      
       fetchCategories()
       fetchSubCategories()
@@ -233,19 +210,6 @@ export default {
                   </li>
                 </ul>
               </div>              
-              <!-- disabled select, works!
-              <div class="form-group">
-                <label for="subcategory">Sottocategoria:</label>
-                <select 
-                  id="subcategory" 
-                  name="subcategory" 
-                  v-model="subcategory"
-                  required
-                >
-                  <option v-for="subcategory in subcategories" :key="subcategory.id" :value="subcategory.id">{{ subcategory.sub_cat_name }}</option>
-                </select>
-              </div>
-              -->
             </div>
           </div>
           <button type="submit">Invia</button>
@@ -320,3 +284,5 @@ li:hover {
 }
 
 </style>
+
+
