@@ -25,6 +25,7 @@ export default {
     /* test */
     const subcategoryInput = ref('')
     const filteredSubcategories = ref([])
+    const message = ref('')
     
     // Eventualmente, puoi aggiungere ulteriori logiche all'interno di onMounted o altri lifecycle hooks
 
@@ -68,8 +69,10 @@ export default {
       const result = await sendData(form_data)
       if (result.success) {
         console.log('Post avvenuto con successo!')
+        message.value = 'Post avvenuto con successo!'
       } else {
         console.log(`Errore: ${result.error}`)
+        message.value = `Errore: ${result.error}`;
       }
     } 
     
@@ -245,7 +248,8 @@ export default {
             </div>
           </div>
           <button type="submit">Invia</button>
-        </form>        
+        </form>
+        <div v-if="message" class="notification">{{ message }}</div>
       </div>
 
     </div>
@@ -253,6 +257,14 @@ export default {
 </template>
   
 <style scoped>
+/* notification */
+.notification {
+  padding: 1em;
+  margin: 1em 0;
+  border: 1px solid #ccc;
+  background-color: #e0ffe0;
+  color: #007700;
+}
 
 .section {
   position: relative;
