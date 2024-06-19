@@ -33,7 +33,7 @@ export default {
 
     const api_prod = 'https://bookmarks-list.netlify.app/api/v1/'
     const api_dev = 'http://localhost:4321/api/v1/'
-    const {id, email} = props
+    
 
     /* imported api */
     const fetchCategories = async () => {
