@@ -14,7 +14,7 @@ export default {
     id: String,
     email: String
   },
-  setup() {
+  setup(props) {
     const categories = ref([])
     const category = ref(null)
     const description = ref('')
@@ -27,8 +27,7 @@ export default {
     const subcategories = ref([])
     const subcategory = ref(null)
     const subcategoryInput = ref('')
-    const url = ref('')
-    const id = props.id
+    const url = ref('')   
 
     /* imported api */
     const fetchCategories = async () => {
@@ -102,7 +101,8 @@ export default {
       fetchCategories()
       fetchSubCategories()
       fetchProviders()
-      console.log('id', id)
+      console.log('ID from props:', props.id)
+      console.log('Email from props:', props.email)
     })
 
     return {
