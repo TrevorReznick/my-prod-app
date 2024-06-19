@@ -28,12 +28,6 @@ export default {
     const subcategory = ref(null)
     const subcategoryInput = ref('')
     const url = ref('')
-    
-    // Eventualmente, puoi aggiungere ulteriori logiche all'interno di onMounted o altri lifecycle hooks
-
-    const api_prod = 'https://bookmarks-list.netlify.app/api/v1/'
-    const api_dev = 'http://localhost:4321/api/v1/'
-    
 
     /* imported api */
     const fetchCategories = async () => {
@@ -107,7 +101,7 @@ export default {
       fetchCategories()
       fetchSubCategories()
       fetchProviders()
-      //getMain()
+      console.log('id', id)
     })
 
     return {
