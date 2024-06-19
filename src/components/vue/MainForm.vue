@@ -28,6 +28,7 @@ export default {
     const subcategory = ref(null)
     const subcategoryInput = ref('')
     const url = ref('')
+    const id = props.id
 
     /* imported api */
     const fetchCategories = async () => {
