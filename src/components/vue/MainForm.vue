@@ -10,7 +10,10 @@ import {
 } from '../../scripts/requests';
 
 export default {
-  //
+  props: {
+    id: String,
+    email: String
+  },
   setup() {
     const categories = ref([])
     const category = ref(null)
