@@ -62,6 +62,7 @@ export default {
         ratings: ratings.value,
         id_cat: category.value,
         id_sub_cat: subcategory.value,
+        user_id: props.id
       }
       const result = await sendData(form_data)
       if (result.success) {
