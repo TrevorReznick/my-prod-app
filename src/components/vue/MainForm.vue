@@ -60,6 +60,7 @@ export default {
         id_cat: category.value,
         id_provider: provider.value,
         id_sub_cat: subcategory.value,
+        description: description.value,
         name: name.value,
         ratings: ratings.value,
         url: url.value,
