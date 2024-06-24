@@ -14,6 +14,7 @@ interface MainFormData {
     ratings: number,
     category: number,
     subcategory: number,
-    user_id: string
+    user_id: string,
+    provider: number
 }
 
