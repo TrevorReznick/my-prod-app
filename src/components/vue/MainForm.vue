@@ -19,10 +19,10 @@ export default {
     const category = ref(null)
     const description = ref('')
     const filteredSubcategories = ref([])
-    const provider = ref([1])
     const main = ref([])
     const message = ref('')
     const name = ref('')
+    const provider = ref([1])
     const providers = ref([])
     const ratings = ref(1) // Inizializziamo con un valore predefinito come "1"
     const subcategories = ref([])
@@ -58,7 +58,7 @@ export default {
     const doMainForm = async () => {
       const form_data = {
         id_cat: category.value,
-        id_provider: id_provider.value,
+        id_provider: provider.value,
         id_sub_cat: subcategory.value,
         name: name.value,
         ratings: ratings.value,
