@@ -13,6 +13,7 @@ interface MainFormData {
     description: string,
     ratings: number,
     category: number,
-    subcategory: number
+    subcategory: number,
+    user_id: string
 }
 
