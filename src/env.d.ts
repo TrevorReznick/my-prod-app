@@ -10,7 +10,7 @@ declare namespace App {
 interface MainFormData {
     category: number,
     description: string,
-    provider: number
+    provider: number,
     name: string,
     ratings: number,
     subcategory: number,
