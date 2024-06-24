@@ -19,7 +19,7 @@ export default {
     const category = ref(null)
     const description = ref('')
     const filteredSubcategories = ref([])
-    const id_provider = ref([1])
+    const provider = ref([1])
     const main = ref([])
     const message = ref('')
     const name = ref('')
