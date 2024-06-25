@@ -29,7 +29,7 @@ export default {
     const subcategory = ref(null)
     const subcategoryInput = ref('')
     const url = ref('')
-    const user_id = ref(null)
+    const id = ref(props.id)
 
     /* imported api */
     const fetchCategories = async () => {
@@ -65,7 +65,7 @@ export default {
         name: name.value,
         ratings: ratings.value,
         url: url.value,
-        user_id: props.id
+        user_id: id
       }
       const result = await sendData(form_data)
       if (result.success) {
@@ -125,7 +125,7 @@ export default {
       subcategoryInput,
       subcategories,
       url,
-      user_id
+      id
     }
   }
 }
