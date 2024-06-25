@@ -28,7 +28,8 @@ export default {
     const subcategories = ref([])
     const subcategory = ref(null)
     const subcategoryInput = ref('')
-    const url = ref('')   
+    const url = ref('')
+    const user_id = ref(null)
 
     /* imported api */
     const fetchCategories = async () => {
