@@ -22,7 +22,7 @@ export default {
     const main = ref([])
     const message = ref('')
     const name = ref('')
-    const provider = ref([1])
+    const provider = ref(1)
     const providers = ref([])
     const ratings = ref(1) // Inizializziamo con un valore predefinito come "1"
     const subcategories = ref([])
@@ -115,7 +115,7 @@ export default {
       doMainForm, // Assicurati di restituire la funzione sendData se vuoi usarla nel template      
       filteredSubcategories,
       filterSubcategories,//method
-      id_provider,
+      provider,
       message,
       name,
       ratings,
