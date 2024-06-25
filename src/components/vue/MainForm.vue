@@ -108,22 +108,23 @@ export default {
       console.log('Email from props:', props.email)
     })
 
-    return {
+   return {
       category,
       categories,
       description,
       doMainForm, // Assicurati di restituire la funzione sendData se vuoi usarla nel template      
       filteredSubcategories,
       filterSubcategories,//method
-      provider,
       message,
       name,
+      provider,
       ratings,
       selectSubcategory, //method,
       subcategory,
       subcategoryInput,
       subcategories,
-      url
+      url,
+      user_id
     }
   }
 }
