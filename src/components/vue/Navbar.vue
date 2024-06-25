@@ -22,6 +22,12 @@ onMounted(() => {
               >
             </li>
             <li>
+              <a
+                href="/main"
+                class="block text-zinc-900 dark:text-gray-200">New Site</a
+              >
+            </li>
+            <li>
               <a href="/login/signin" class="block text-zinc-900 dark:text-gray-200"
                 >Sign in</a
               >
