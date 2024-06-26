@@ -113,8 +113,7 @@ export default {
       filteredSubcategories,
       filterSubcategories,//method
       message,
-      name,
-      provider,
+      name,      
       ratings,
       selectSubcategory, //method,
       subcategory,
