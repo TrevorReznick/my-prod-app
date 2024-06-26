@@ -59,12 +59,12 @@ export default {
     const doMainForm = async () => {
       const form_data = {
         id_cat: category.value,
-        id_provider: provider.value,
         id_sub_cat: subcategory.value,
-        description: description.value,
-        name: name.value,
         ratings: ratings.value,
         url: url.value,
+        description: description.value,
+        name: name.value,
+        id_provider: provider.value,        
         user_id: id.value
       }
       const result = await sendData(form_data)
