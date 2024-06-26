@@ -17,6 +17,7 @@ export async function sendData(data: MainFormData) {
       }
   
       const result = await response.json()
+      console.log(result)
       return { success: true, data: result }
     } catch (error: any) {
       console.error('There was a problem with the fetch operation:', error)
