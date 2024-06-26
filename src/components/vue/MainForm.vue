@@ -65,7 +65,7 @@ export default {
         name: name.value,
         ratings: ratings.value,
         url: url.value,
-        user_id: id
+        user_id: id.value
       }
       const result = await sendData(form_data)
       if (result.success) {
