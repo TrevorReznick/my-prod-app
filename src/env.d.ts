@@ -13,9 +13,7 @@ interface MainFormData {
     ratings: number,
     url: string,
     description: string,
-    name: string,
-    id_provider: number,    
-    user_id: string    
+    name: string        
 }
 
 
