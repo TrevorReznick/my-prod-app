@@ -22,7 +22,6 @@ export default {
     const main = ref([])
     const message = ref('')
     const name = ref('')
-    const provider = ref(null)
     const providers = ref([])
     const ratings = ref(1) // Inizializziamo con un valore predefinito come "1"
     const subcategories = ref([])
@@ -62,9 +61,7 @@ export default {
         ratings: ratings.value,
         url: url.value,
         description: description.value,
-        name: name.value,
-        id_provider: provider.value,        
-        user_id: props.id
+        name: name.value      
       }
       const result = await sendData(form_data)
       if (result.success) {
