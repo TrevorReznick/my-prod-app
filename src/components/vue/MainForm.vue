@@ -22,14 +22,13 @@ export default {
     const main = ref([])
     const message = ref('')
     const name = ref('')
-    const provider = ref(1)
+    const provider = ref(null)
     const providers = ref([])
     const ratings = ref(1) // Inizializziamo con un valore predefinito come "1"
     const subcategories = ref([])
     const subcategory = ref(null)
     const subcategoryInput = ref('')
-    const url = ref('')
-    const id = ref(props.id)
+    const url = ref('')    
 
     /* imported api */
     const fetchCategories = async () => {
@@ -65,7 +64,7 @@ export default {
         description: description.value,
         name: name.value,
         id_provider: provider.value,        
-        user_id: id.value
+        user_id: props.id
       }
       const result = await sendData(form_data)
       if (result.success) {
@@ -124,8 +123,7 @@ export default {
       subcategory,
       subcategoryInput,
       subcategories,
-      url,
-      id
+      url
     }
   }
 }
