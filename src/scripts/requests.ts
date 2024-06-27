@@ -10,7 +10,7 @@ export async function sendData(data: MainFormData) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
-    });
+    })
     if (!response.ok) {
       throw new Error('Network response was not ok')
     }
@@ -22,6 +22,55 @@ export async function sendData(data: MainFormData) {
     return { success: false, error: error.message }
   }
 }
+
+export async function updateData(data: SubMainFormData) {
+  try {
+    const response = await fetch('/api/v1/update_sub_table', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({data}),
+    })
+    if (!response.ok) {
+      throw new Error('Network response was not ok')
+    }
+    const result = await response.json()
+    console.log(result)
+    return { success: true, data: result }
+  } catch(error: any) {
+    console.error('There was a problem with the update operation:', error)
+    return { success: false, error: error.message }
+  }
+
+
+
+
+
+
+  const response = await fetch('/api/v1/update_sub_table', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({data}),
+  })
+  if (!response.ok) {
+    throw new Error('Network response was not ok')
+  }
+  const result = await response.json()
+  console.log(result)
+  return { success: true, data: result }
+} catch (error: any) {
+  console.error('There was a problem with the fetch operation:', error)
+  return { success: false, error: error.message }
+}
+  
+  const result = await response.json();
+  console.log(result);
+  
+}
+
 
 export const getCategories = async () => {   
   try {

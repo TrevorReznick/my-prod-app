@@ -6,7 +6,8 @@ import {
   getSubCategories, 
   getProviders,  
   getMain,
-  sendData
+  sendData,
+  updateData
 } from '../../scripts/requests';
 
 export default {
@@ -27,7 +28,8 @@ export default {
     const subcategories = ref([])
     const subcategory = ref(null)
     const subcategoryInput = ref('')
-    const url = ref('')    
+    const url = ref('')
+    const id = ref(null)
 
     /* imported api */
     const fetchCategories = async () => {
@@ -77,7 +79,14 @@ export default {
           message.value = ''
         }, 5000)
       }
-    } 
+    }
+
+    doUpdateTable = async (id) => {
+      const form_data = {
+        id_src: id,
+        user_id: props.id
+      }
+    }
     
     /* other api */
 
@@ -119,7 +128,8 @@ export default {
       subcategory,
       subcategoryInput,
       subcategories,
-      url
+      url,
+      id
     }
   }
 }
