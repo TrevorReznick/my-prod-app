@@ -16,6 +16,11 @@ interface MainFormData {
     name: string        
 }
 
+interface SubMainFormData {
+  id: string,
+  user_id: string         
+}
+
 
     
     
