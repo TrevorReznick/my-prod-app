@@ -15,7 +15,7 @@ export async function sendData(data: MainFormData) {
       throw new Error('Network response was not ok')
     }
     const result = await response.json()
-    console.log(result)
+    console.log('yeahh', result)
     return { success: true, data: result }
   } catch (error: any) {
     console.error('There was a problem with the fetch operation:', error)
