@@ -14,8 +14,7 @@ export async function sendData(data: MainFormData) {
     if (!response.ok) {
       throw new Error('Network response was not ok')
     }
-    const result = await response.json()
-    console.log('yeahh', result)
+    const result = await response.json()    
     return { success: true, data: result }
   } catch (error: any) {
     console.error('There was a problem with the fetch operation:', error)
@@ -24,6 +23,8 @@ export async function sendData(data: MainFormData) {
 }
 
 export async function updateData(data: SubMainFormData) {
+  //console.log('hello from request')
+  //console.log('data', data)
   try {
     const response = await fetch(api_url + 'update_sub_table', {
       method: 'POST',
@@ -36,7 +37,7 @@ export async function updateData(data: SubMainFormData) {
       throw new Error('Network response was not ok')
     }
     const result = await response.json()
-    console.log(result)
+    console.log('update result data', result)
     return { success: true, data: result }
   } catch(error: any) {
     console.error('There was a problem with the update operation:', error)

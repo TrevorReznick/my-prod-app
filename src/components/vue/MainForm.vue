@@ -66,7 +66,9 @@ export default {
         name: name.value      
       }
       const result = await sendData(form_data)
-      if (result.success) {
+      if (result.success) {        
+        const ids = result.data.map((obj) => obj.id)        
+        doUpdateTable(ids[0])
         console.log('Post avvenuto con successo!')
         message.value = 'Post avvenuto con successo!'
         setTimeout(() => {
@@ -81,10 +83,23 @@ export default {
       }
     }
 
-    doUpdateTable = async (id) => {
+    const doUpdateTable = async (ids) => {
       const form_data = {
-        id_src: id,
+        id_src: ids,
         user_id: props.id
+      }
+      const result = await updateData(form_data)
+      if (result.success) {
+        message.value = 'Update avvenuto con successo!'
+        setTimeout(() => {
+          message.value = ''
+        }, 5000)
+      } else {
+        console.log(`Errore: ${result.error}`)
+        message.value = `Errore: ${result.error}`
+        setTimeout(() => {
+          message.value = ''
+        }, 5000)
       }
     }
     

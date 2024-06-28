@@ -8,6 +8,7 @@ declare namespace App {
 }
 
 interface MainFormData {
+    id?: number,
     id_cat: number,
     id_subcat: number,
     ratings: number,
@@ -17,7 +18,7 @@ interface MainFormData {
 }
 
 interface SubMainFormData {
-  id: string,
+  id_src: string,
   user_id: string         
 }
 
