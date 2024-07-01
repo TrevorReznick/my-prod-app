@@ -63,13 +63,14 @@ export default {
         ratings: ratings.value,
         url: url.value,
         description: description.value,
-        name: name.value      
+        name: name.value,
+        id_provider: 1,
+        user_id: props.id
       }
       const result = await sendData(form_data)
       if (result.success) {        
-        const ids = result.data.map((obj) => obj.id)        
-        doUpdateTable(ids[0])
-        console.log('Post avvenuto con successo!')
+        const ids = result.data.map((obj) => obj.id)  // => get last id
+        const last_id = ids[0]
         message.value = 'Post avvenuto con successo!'
         setTimeout(() => {
           message.value = ''
@@ -83,25 +84,7 @@ export default {
       }
     }
 
-    const doUpdateTable = async (ids) => {
-      const form_data = {
-        id_src: ids,
-        user_id: props.id
-      }
-      const result = await updateData(form_data)
-      if (result.success) {
-        message.value = 'Update avvenuto con successo!'
-        setTimeout(() => {
-          message.value = ''
-        }, 5000)
-      } else {
-        console.log(`Errore: ${result.error}`)
-        message.value = `Errore: ${result.error}`
-        setTimeout(() => {
-          message.value = ''
-        }, 5000)
-      }
-    }
+    
     
     /* other api */
 
