@@ -40,6 +40,14 @@ export default {
       }
     }
 
+    const fetchMain = async () => {
+      try {
+        main.value = await getMain()
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
     const fetchSubCategories = async () => {
       try {
         subcategories.value = await getSubCategories()
@@ -82,9 +90,7 @@ export default {
           message.value = ''
         }, 5000)
       }
-    }
-
-    
+    }    
     
     /* other api */
 

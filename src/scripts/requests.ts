@@ -55,6 +55,16 @@ export const getCategories = async () => {
   }
 }
 
+export const getMain = async () => {
+  try {
+    const response = await fetch(api_url + 'main')
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export const getSubCategories = async () => {
   try {
     const response = await fetch(api_url + 'sub-category')
@@ -75,16 +85,6 @@ export const getProviders = async () => {
     console.error(error)
   }
 
-}
-
-export const getMain = async () => {
-  try {
-    const response = await fetch(api_url + 'main')
-    const data = await response.json()
-    return data
-  } catch (error) {
-    console.error(error)
-  }
 }
     
     

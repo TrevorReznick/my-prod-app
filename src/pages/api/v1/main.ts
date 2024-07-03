@@ -4,13 +4,19 @@ import { supabase } from '../../../providers/supabase'
 export const GET: APIRoute = async () => {
   
   const { data, error } = await supabase
-    //.rpc('get_main')    
-    .from("main_category")
-    .select(`
-      main_category.*,
-      sub_category:sub_category_id(*)
-    `)
-    .order("id", { ascending: true });
+    .from('main_table').select(`
+      id,
+      name,
+      id_cat,
+      ratings,
+      url,
+      description,    
+      main_category (
+        id, 
+        name 
+      )
+    `)   
+    //.order("id", { ascending: true });
     
   if (error) {
     return new Response(
