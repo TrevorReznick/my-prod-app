@@ -1,6 +1,7 @@
 
 <script>
 import { ref, onMounted, isProxy, toRaw} from 'vue'
+import Card from './HeroCard.vue'
 import { 
   getCategories, 
   getSubCategories, 
@@ -8,9 +9,13 @@ import {
   getMain,
   sendData,
   updateData
-} from '../../scripts/requests';
+} from '../../scripts/requests'
+
 
 export default {
+  components: {
+    Card
+  },
   props: {
     id: String,
     email: String
@@ -30,6 +35,7 @@ export default {
     const subcategoryInput = ref('')
     const url = ref('')
     const id = ref(null)
+    const obj = ref({})
 
     /* imported api */
     const fetchCategories = async () => {
@@ -128,6 +134,7 @@ export default {
       doMainForm, // Assicurati di restituire la funzione sendData se vuoi usarla nel template      
       filteredSubcategories,
       filterSubcategories,//method
+      main,
       message,
       name,      
       ratings,
@@ -136,7 +143,8 @@ export default {
       subcategoryInput,
       subcategories,
       url,
-      id
+      id,
+      obj
     }
   }
 }
@@ -231,7 +239,9 @@ export default {
         </form>
         <div v-if="message" class="notification">{{ message }}</div>
       </div>
-
+    </div>
+    <div class="container">
+      <Card v-for="item in main" :key="main[item.id]" :obj="item" />
     </div>
   </section>
 </template>
