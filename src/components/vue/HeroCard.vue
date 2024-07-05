@@ -37,13 +37,13 @@ export default {
 <template>
     <li class="link-card">
         <a :href="url" target="blank">
-        <h2>
-            {{ name }}
-            <span>&rarr;</span>
-        </h2>
-        <p>
-            {{ description }}
-        </p>
+            <h2>
+                {{ name }}
+                <span>&rarr;</span>
+            </h2>
+            <p>
+                {{ description }} -- {{ category }}
+            </p>
         </a>
     </li>
 </template>
@@ -52,7 +52,7 @@ export default {
 .link-card {
     list-style: none;
 	display: flex;
-    direction: row;
+    flex-direction: row;
 	padding: 0.25rem;
 	background-color: white;
 	background-image: none;

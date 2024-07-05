@@ -247,6 +247,10 @@ export default {
 </template>
   
 <style scoped>
+.card {
+  display: flex;
+  direction: row;
+}
 /* notification */
 .notification {
   padding: 1em;
