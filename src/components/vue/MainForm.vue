@@ -114,8 +114,11 @@ export default {
       fetchCategories()
       fetchSubCategories()
       fetchProviders()
+      fetchMain()
+      /*
       console.log('ID from props:', props.id)
       console.log('Email from props:', props.email)
+      */
     })
 
    return {

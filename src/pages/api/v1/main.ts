@@ -13,7 +13,7 @@ export const GET: APIRoute = async () => {
       description,    
       main_category (
         id, 
-        name 
+        cat_name 
       )
     `)   
     //.order("id", { ascending: true });
