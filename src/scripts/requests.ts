@@ -55,6 +55,16 @@ export const getCategories = async () => {
   }
 }
 
+export const getInfo = async (url: string) => {
+  try {
+    const response = await fetch(api_url + 'info?=' + url)
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export const getMain = async () => {
   try {
     const response = await fetch(api_url + 'main')

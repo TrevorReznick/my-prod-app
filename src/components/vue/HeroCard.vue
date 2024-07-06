@@ -1,6 +1,7 @@
 <script>
-import { ref } from 'vue'
+import { ref, onMounted} from 'vue'
 
+import { getInfo } from '../../scripts/requests'
 
 export default {
     name: 'Site Card',
@@ -16,6 +17,20 @@ export default {
         const description = props.obj.description
         const main_category = props.obj.main_category
         const category = main_category.cat_name
+        const thumb = ref()
+
+        const fetchInfo = async (url) => {
+            console.log('hello from Card get info')
+            try {
+                thumb.value = await getInfo(url)
+            } catch (error) {
+                console.error(error)
+            }   
+        }
+
+        onMounted(() => {
+            fetchInfo(url)
+        })
 
         return {
             id,
@@ -25,7 +40,8 @@ export default {
             url,
             description,
             /*main_category*/
-            category
+            category,
+            thumb
         }
   }
 

@@ -8,7 +8,8 @@ import {
   getProviders,  
   getMain,
   sendData,
-  updateData
+  updateData,
+  getInfo
 } from '../../scripts/requests'
 
 
@@ -114,7 +115,6 @@ export default {
       subcategory.value = element
       filteredSubcategories.value = []
     }
-
     
     onMounted(() => {      
       fetchCategories()
@@ -241,7 +241,11 @@ export default {
       </div>
     </div>
     <div class="container">
-      <Card v-for="item in main" :key="main[item.id]" :obj="item" />
+      <Card 
+        v-for="item in main" 
+        :key="main[item.id]" 
+        :obj="item"
+      />
     </div>
   </section>
 </template>
