@@ -8,12 +8,12 @@ export const GET: APIRoute = async (request) => {
 
     console.log('Welcome to our API!')
 
-    /*
+    
     const url = new URL(request.url)
     console.log('url', url)
     const siteUrl = url.searchParams.get('url')
     console.log('siteUrl', siteUrl)
-    */
+    /*
 
     const url = 'https://url-screenshot-api1.p.rapidapi.com/screenshot?url=https%3A%2F%2Fexample.com%2F'
     const options = {
@@ -32,7 +32,7 @@ export const GET: APIRoute = async (request) => {
         console.error(error)
     }
 
-    /*
+    */
 
     if (!siteUrl) {
         return new Response(
@@ -76,6 +76,6 @@ export const GET: APIRoute = async (request) => {
             }
         )
     }
-    */
+    
 }
 
