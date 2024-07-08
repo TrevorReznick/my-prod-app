@@ -32,9 +32,9 @@ export const GET: APIRoute = async (request) => {
             }
         }
         const response = await fetch(url, options)
-        if (!response.ok) {
+        /*if (!response.ok) {
             throw new Error('Failed to fetch data')
-        }        
+        } */       
         const result = await response.text()
         console.log(result)  
 
