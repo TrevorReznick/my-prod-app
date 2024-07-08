@@ -3,10 +3,7 @@ import type { APIRoute } from 'astro'
 //const thumbnail_ws_api_key = import.meta.env.PUBLIC_THUMBNAIL_WS_API_KEY
 
 export const GET: APIRoute = async (request) => {
-
     console.log('Welcome to our API!')
-
-    
     const url = new URL(request.url)
     //console.log('url', url)
     const siteUrl = url.searchParams.get('url')
@@ -26,7 +23,7 @@ export const GET: APIRoute = async (request) => {
     try {
         
         //const response = await fetch(`https://api.thumbnail.ws/api/${thumbnail_ws_api_key}/thumbnail/get?url=${encodeURIComponent(siteUrl)}&width=200`)
-        const url = 'https://url-screenshot-api1.p.rapidapi.com/screenshot?url=https%3A%2F%2Fexample.com%2F'
+        const url = `https://url-screenshot-api1.p.rapidapi.com/screenshot?url=${siteUrl}`
         const options = {
             method: 'GET',
             headers: {
@@ -34,14 +31,12 @@ export const GET: APIRoute = async (request) => {
                 'x-rapidapi-host': 'url-screenshot-api1.p.rapidapi.com'
             }
         }
+        const response = await fetch(url, options)
         if (!response.ok) {
             throw new Error('Failed to fetch data')
-        }
-
-        const response = await fetch(url, options)
+        }        
         const result = await response.text()
-        console.log(result)        
-        
+        console.log(result)  
 
         return new Response(
             JSON.stringify({
