@@ -57,7 +57,7 @@ export const getCategories = async () => {
 
 export const getInfo = async (url: string) => {
   try {
-    const response = await fetch(api_url + 'info?=' + url)
+    const response = await fetch(api_url + 'info?url=' + url)
     const data = await response.json()
     return data
   } catch (error) {
