@@ -45,7 +45,7 @@ export const GET: APIRoute = async (request) => {
             }),
             {
                 status: 200,
-                headers: { 'Content-Type': 'application/jpeg' },
+                headers: { 'Content-Type': 'application/json' },
             }
         )
     } catch (error: any) {
