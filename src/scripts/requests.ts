@@ -56,9 +56,11 @@ export const getCategories = async () => {
 }
 
 export const getInfo = async (url: string) => {
+  
   try {
     const response = await fetch(api_url + 'info?url=' + url)
     const data = await response.json()
+    //const base64Image = data.data.image    
     return data
   } catch (error) {
     console.error(error)

@@ -4,11 +4,11 @@ import { ref, onMounted} from 'vue'
 import { getInfo } from '../../scripts/requests'
 
 export default {
-    name: 'Site Card',
+    name: 'Site Card',    
     props: {
         obj: Object
     },
-    setup(props) {
+        setup(props) {
         const id =  props.obj.id
         const name =  props.obj.name
         const id_cat = props.obj.id_cat
@@ -17,16 +17,24 @@ export default {
         const description = props.obj.description
         const main_category = props.obj.main_category
         const category = main_category.cat_name
-        const thumb = ref()
+        const thumb = ref('')
 
         const fetchInfo = async (url) => {
-            console.log('hello from Card get info')
-            try {
-                thumb.value = await getInfo(url)
-            } catch (error) {
-                console.error(error)
-            }   
+            //console.log('Calling getInfo...')
+            const response = await getInfo(url)
+           // console.log('getInfo response:', response) // <--- Add this line
+            const base64ImageData = response.data
+            //console.log('base64ImageData:', base64ImageData) // <--- Add this line
+            const decodedImageData = atob(base64ImageData.split(',')[1])
+            thumb.value = `data:image/jpeg;base64, ${decodedImageData}`
+            //const imageBlob = new Blob([decodedImageData], { type: 'image/jpeg' })
+            //thumb.value = URL.createObjectURL(imageBlob)
         }
+           
+        /*catch (error) {
+            console.error(error)
+        }*/
+
 
         onMounted(() => {
             fetchInfo(url)
@@ -60,6 +68,7 @@ export default {
             <p>
                 {{ description }} -- {{ category }}
             </p>
+            <img :src="thumb" alt="Thumbnail" width="300" height="300" />
         </a>
     </li>
 </template>

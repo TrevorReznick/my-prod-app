@@ -3,10 +3,11 @@ import type { APIRoute } from 'astro'
 //const thumbnail_ws_api_key = import.meta.env.PUBLIC_THUMBNAIL_WS_API_KEY
 
 export const GET: APIRoute = async (request) => {
-    console.log('Welcome to our API!')
+    console.log('Get Screenshot Api!')
     const url = new URL(request.url)
-    //console.log('url', url)
-    const siteUrl = url.searchParams.get('url')
+    console.log('url', url)
+    let temp: any = url.searchParams.get('url')
+    const siteUrl = encodeURIComponent(temp)
     //console.log('siteUrl', siteUrl)
     if (!siteUrl) {
         return new Response(
@@ -32,16 +33,24 @@ export const GET: APIRoute = async (request) => {
             }
         }
         const response = await fetch(url, options)
-        /*if (!response.ok) {
+        const buffer = await response.arrayBuffer()
+        const base64Image = Buffer.from(buffer).toString('base64')
+
+        if (!response.ok) {
             throw new Error('Failed to fetch data')
-        } */       
+        }
+          
+        
+        /*
         const result = await response.text()
-        console.log(result)  
+        console.log('result??? ', result) 
+        */
+         
 
         return new Response(
             JSON.stringify({
-                message: 'Welcome to our API!',
-                data: result,
+                message: 'Screenshot Api request done!',
+                data: `data:image/jpeg;base64, ${base64Image}`
             }),
             {
                 status: 200,
