@@ -37,7 +37,7 @@ export default {
 
 
         onMounted(() => {
-            fetchInfo(url)
+            //fetchInfo(url)
         })
 
         return {
