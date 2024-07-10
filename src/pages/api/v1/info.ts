@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro'
 
-//const thumbnail_ws_api_key = import.meta.env.PUBLIC_THUMBNAIL_WS_API_KEY
+const thumbnail_ws_api_key = import.meta.env.PUBLIC_THUMBNAIL_WS_API_KEY
 
 export const GET: APIRoute = async (request) => {
     console.log('Get Screenshot Api!')
