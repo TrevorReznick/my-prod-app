@@ -20,9 +20,9 @@ export default {
         const thumb = ref('')
 
         const fetchInfo = async (url) => {
-            //console.log('Calling getInfo...')
+            console.log('Calling getInfo...')
             const response = await getInfo(url)
-           // console.log('getInfo response:', response) // <--- Add this line
+            console.log('getInfo response:', response) // <--- Add this line
             const base64ImageData = response.data
             //console.log('base64ImageData:', base64ImageData) // <--- Add this line
             const decodedImageData = atob(base64ImageData.split(',')[1])
