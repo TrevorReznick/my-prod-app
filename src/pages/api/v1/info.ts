@@ -23,7 +23,7 @@ export const GET: APIRoute = async (request) => {
 
     try {
         
-        const url = `https://api.thumbnail.ws/api/${thumbnail_ws_api_key}/thumbnail/get?url=${encodeURIComponent(siteUrl)}&width=200`
+        const url = `https://api.thumbnail.ws/api/${thumbnail_ws_api_key}/thumbnail/get?url=${siteUrl}&width=200`
         //const url = `https://url-screenshot-api1.p.rapidapi.com/screenshot?url=${siteUrl}`
         const options = {
             method: 'GET',
