@@ -267,6 +267,7 @@ export default {
 }
 
 .section {
+  display: block;
   position: relative;
 }
 .form-container {
