@@ -267,8 +267,7 @@ export default {
 }
 
 .section {
-  display: block;
-  position: relative;
+  display: block;  
 }
 .form-container {
   width: 600px !important;
