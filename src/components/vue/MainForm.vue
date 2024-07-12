@@ -240,6 +240,8 @@ export default {
         <div v-if="message" class="notification">{{ message }}</div>
       </div>
     </div>
+  </section>
+  <section>
     <div class="container">
       <Card 
         v-for="item in main" 
