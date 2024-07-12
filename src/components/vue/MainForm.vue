@@ -266,7 +266,7 @@ export default {
   color: #007700;
 }
 
-.section {
+section {
   display: block;  
 }
 .form-container {
