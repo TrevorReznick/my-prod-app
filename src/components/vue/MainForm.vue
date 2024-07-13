@@ -2,6 +2,7 @@
 <script>
 import { ref, onMounted, isProxy, toRaw} from 'vue'
 import Card from './HeroCard.vue'
+import TestCard from './TestCard.vue'
 import { 
   getCategories, 
   getSubCategories, 
@@ -15,7 +16,8 @@ import {
 
 export default {
   components: {
-    Card
+    Card,
+    TestCard
   },
   props: {
     id: String,
@@ -153,6 +155,21 @@ export default {
 <template>
   <section class="section">
     <div class="container">
+      
+    </div>
+    <div class="container">
+      <Card 
+        v-for="item in main" 
+        :key="main[item.id]" 
+        :obj="item"
+      />
+    </div>    
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Pitchfork Kickstarter Taxidermy</h1>
+      <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table.</p>
+    </div>
+    <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
       <h1 class="text-3xl font-bold mb-4">Inserisci nuovo sito</h1>
       <div class="form-container border-2 border-purple-400 p-4 rounded-lg">
         <form @submit.prevent="doMainForm()">
@@ -240,14 +257,17 @@ export default {
         <div v-if="message" class="notification">{{ message }}</div>
       </div>
     </div>
-    <div class="container">
-      <Card 
-        v-for="item in main" 
+    <div class="flex flex-wrap -m-4">
+      <TestCard 
+        v-for="item in main"
         :key="main[item.id]" 
         :obj="item"
       />
     </div>
-  </section>
+    <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
+  </div>
+</section>
+
 </template>
   
 <style scoped>
