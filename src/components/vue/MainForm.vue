@@ -104,16 +104,19 @@ export default {
     /* other api */
 
     const filterSubcategories = () => {
-      console.log('filtering sub cat')
       const query = subcategoryInput.value.toLowerCase()
-      console.log('input', query)
-      filteredSubcategories.value = subcategories.value.filter(sub => sub.sub_cat_name.toLowerCase().includes(query))      
+      console.log('filtering sub cat')
+      /*if (query.length >= 3) { */// Inizia a filtrare solo se l'input ha almeno 3 caratteri
+        filteredSubcategories.value = subcategories.value.filter(sub => sub.sub_cat_name.toLowerCase().includes(query))
+      /*} else {
+        filteredSubcategories.value = [] // Pulisce i risultati filtrati se l'input ha meno di 3 caratteri
+      } */         
       const obj = JSON.parse(JSON.stringify(filteredSubcategories.value))
       console.log(obj)
     }
 
     const selectSubcategory = (element) => {
-      console.log('select sub cat')
+      console.log('select sub cat', element)
       subcategory.value = element
       filteredSubcategories.value = []
     }
@@ -164,7 +167,7 @@ export default {
         :obj="item"
       />
     </div>    
-  <div class="container px-5 py-24 mx-auto">
+    <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
       <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Pitchfork Kickstarter Taxidermy</h1>
       <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table.</p>
@@ -240,12 +243,12 @@ export default {
                   <!-- Campo di input per l'autocompletamento -->
                 <input
                   type="text"
-                  v-model="subcategory"
+                  v-model="subcategoryInput"
                   @input="filterSubcategories"
                   placeholder="Start typing to search subcategories..."
                 />
                 <ul>
-                  <li v-for="sub in filteredSubcategories" :key="sub.id" @click="selectSubcategory(sub.id)">
+                  <li v-for="sub in filteredSubcategories" :key="sub.id" @click="selectSubcategory(sub.sub_cat_name)">
                     {{ sub.sub_cat_name }}
                   </li>
                 </ul>
