@@ -1,11 +1,16 @@
 ---
 import Layout from '../layouts/NewLayout.astro'
+import Navbar  from '../components/astro/Navbar.astro'
+import NewForm from '../components/vue/MainForm.vue'
+
 import Supabase from '../assets/icons/Supabase.astro'
 import AstroIcon from '../assets/icons/AstroIcon.astro'
-import Navbar  from '../components/astro/Navbar.astro'
 
 export const prerender = true
 const title = 'Supabase and Astro Demo'
+
+const { email, id } = Astro.locals
+export {email, id}
 
 ---
 
@@ -17,7 +22,9 @@ const title = 'Supabase and Astro Demo'
       </header>
       <main class="flex-1 flex flex-col gap-4 items-center p-4 justify-center">
         <div class="grid grid-cols-5 grid-rows-5 gap-4 w-full h-full">
-          <div class="col-span-5 bg-green-200 p-4">Main</div>
+          <div class="col-span-5 bg-green-200 p-4 flex items-center justify-center">
+            <NewForm client:visible email={email} id={id} />
+          </div>
         </div>
       </main>
       <footer class="bg-red-200 p-4">Footer</footer>
