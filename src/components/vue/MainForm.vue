@@ -161,13 +161,15 @@ export default {
     <div class="container">
       
     </div>
+    <!--
     <div class="container">
       <Card 
         v-for="item in main" 
         :key="main[item.id]" 
         :obj="item"
       />
-    </div>    
+    </div>
+    -->    
     <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
       <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Pitchfork Kickstarter Taxidermy</h1>
@@ -262,7 +264,7 @@ export default {
       </div>
     </div>
     <div class="flex flex-wrap -m-4">
-      <TestCard 
+      <Card 
         v-for="item in main"
         :key="main[item.id]" 
         :obj="item"
