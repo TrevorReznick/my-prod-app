@@ -107,7 +107,7 @@ export default {
       const query = subcategoryInput.value.toLowerCase()
       console.log('filtering sub cat')
       /*if (query.length >= 3) { */// Inizia a filtrare solo se l'input ha almeno 3 caratteri
-        filteredSubcategories.value = subcategories.value.filter(sub => sub.sub_cat_name.toLowerCase().includes(query))
+      filteredSubcategories.value = subcategories.value.filter(sub => sub.sub_cat_name.toLowerCase().includes(query))
       /*} else {
         filteredSubcategories.value = [] // Pulisce i risultati filtrati se l'input ha meno di 3 caratteri
       } */         
@@ -115,9 +115,10 @@ export default {
       console.log(obj)
     }
 
-    const selectSubcategory = (element) => {
-      console.log('select sub cat', element)
-      subcategory.value = element
+    const selectSubcategory = (id, name) => {
+      console.log('select sub cat', id)
+      subcategory.value = id
+      subcategoryInput.value = name
       filteredSubcategories.value = []
     }
     
@@ -248,7 +249,7 @@ export default {
                   placeholder="Start typing to search subcategories..."
                 />
                 <ul>
-                  <li v-for="sub in filteredSubcategories" :key="sub.id" @click="selectSubcategory(sub.sub_cat_name)">
+                  <li v-for="sub in filteredSubcategories" :key="sub.id" @click="selectSubcategory(sub.id, sub.sub_cat_name)">
                     {{ sub.sub_cat_name }}
                   </li>
                 </ul>
