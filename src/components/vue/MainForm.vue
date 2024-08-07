@@ -82,7 +82,9 @@ export default {
         description: description.value,
         name: name.value,
         id_provider: 1,
-        user_id: props.id
+        ,
+        //user_id: props.id
+        user_id: '4565445'
       }
       console.log(form_data)
       const result = await sendData(form_data)
