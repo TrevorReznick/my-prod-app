@@ -84,6 +84,7 @@ export default {
         id_provider: 1,
         user_id: props.id
       }
+      console.log(form_data)
       const result = await sendData(form_data)
       if (result.success) {        
         const ids = result.data.map((obj) => obj.id)  // => get last id
