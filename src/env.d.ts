@@ -14,7 +14,8 @@ interface MainFormData {
     ratings: number,
     url: string,
     description: string,
-    name: string        
+    name: string,
+    user_id: string 
 }
 
 interface SubMainFormData {
